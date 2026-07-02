@@ -1,0 +1,31 @@
+#!/usr/bin/env bash
+
+chosen=$(printf "Shutdown\nReboot\nLock\nSuspend\nLogout" | \
+rofi -dmenu \
+    -theme ~/.config/rofi/power.rasi \
+    -i \
+    -p "Power"
+)
+
+lock_and_suspend() {
+    swaylock -f
+    systemctl suspend
+}
+
+case "$chosen" in
+    Shutdown)
+        systemctl poweroff
+        ;;
+    Reboot)
+        systemctl reboot
+        ;;
+    Lock)
+        swaylock -f
+        ;;
+    Suspend)
+        lock_and_suspend
+        ;;
+    Logout)
+        niri msg action quit --skip-confirmation
+        ;;
+esac

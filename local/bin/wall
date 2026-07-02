@@ -1,0 +1,33 @@
+#!/bin/sh
+# =============================================================
+# FASTEST WallSelect - On-demand thumbnail generation
+# =============================================================
+wall_dir="$HOME/walls/"
+cacheDir="$HOME/.cache/WallSelect"
+mkdir -p "$cacheDir"
+rofi_command="rofi -dmenu -theme $HOME/.config/rofi/wall.rasi"
+
+# --------------------------------------------------
+# Show Rofi instantly, but generate thumbnails in loop
+# --------------------------------------------------
+wall_selection=$(
+    find "$wall_dir" -type f \( -iname "*.jpg" -o -iname "*.jpeg" -o -iname "*.png" -o -iname "*.webp" \) -print0 |
+    xargs -0 -I {} basename "{}" |
+    sort |
+    while IFS= read -r file; do
+        full="$wall_dir/$file"
+        thumb="$cacheDir/$file"
+        [ ! -f "$thumb" ] && magick "$full" -resize 400x800^ -gravity center -extent 800x800 "$thumb" 2>/dev/null
+        printf '%s\000icon\037%s\n' "$file" "$thumb"
+    done |
+    $rofi_command
+)
+
+[ -z "$wall_selection" ] && exit 0
+
+wallpaper="${wall_dir}/${wall_selection}"
+# Save selected wallpaper
+echo "$wallpaper" > "$HOME/.cache/current-wallpaper"
+
+# Restart the systemd service
+systemctl --user restart swaybg.service

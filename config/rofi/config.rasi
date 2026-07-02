@@ -1,0 +1,100 @@
+configuration {
+    show-icons: true;
+    icon-theme: "Papirus-Dark";
+    drun-display-format: "{name}";
+    display-drun: "";
+}
+
+* {
+    font:                        "mono 14";
+    background-color:            transparent;
+    text-color:                  #e8e8ed;
+    border:                      0;
+    margin:                      0;
+    padding:                     0;
+    spacing:                     0;
+}
+
+window {
+    width:                       510px;
+    location:                    center;
+    anchor:                      center;
+    background-color:            rgba(28, 28, 30, 0.6);
+    border-radius:               14px;
+    border:                      1px;
+    border-color:                rgba(255, 255, 255, 0.10);
+}
+
+mainbox {
+    children:                    [ inputbar, listview ];
+}
+
+inputbar {
+    padding:                     16px 20px 12px 20px;
+    border:                      0 0 1px 0;
+    border-color:                rgba(255, 255, 255, 0.16);
+    children:                    [ prompt, entry ];
+}
+
+prompt {
+    padding:                     0 8px 0 0;
+    text-color:                  rgba(255, 255, 255, 0.30);
+}
+
+entry {
+    placeholder:                 "Search";
+    placeholder-color:           rgba(255, 255, 255, 0.25);
+    text-color:                  #f0f0f5;
+    cursor:                      text;
+}
+
+inputbar {
+    padding:                     16px 20px 12px 20px;
+    border:                      0;
+    children:                    [ prompt, entry ];
+}
+listview {
+    padding:                     6px 0;
+    lines:                       8;
+    columns:                     1;
+    scrollbar:                   false;
+    fixed-height:                false;
+    cycle:                       true;
+    border:                      1px 0 0 0;
+    border-color:                rgba(255, 255, 255, 0.16);
+}
+element {
+    padding:                     9px 16px;
+    background-color:            transparent;
+    orientation:                 horizontal;
+    children:                    [ element-icon, element-text ];
+    spacing:                     12px;
+}
+
+element normal.normal,
+element alternate.normal {
+    background-color:            transparent;
+    text-color:                  #e8e8ed;
+}
+
+element selected.normal {
+    background-color:            rgba(255, 255, 255, 0.10);
+    border-radius:               8px;
+    text-color:                  #ffffff;
+}
+
+element alternate.active,
+element alternate.urgent {
+    background-color:            transparent;
+    text-color:                  #e8e8ed;
+}
+
+element-icon {
+    size:                        22px;
+    vertical-align:              0.5;
+}
+
+element-text {
+    vertical-align:              0.5;
+    text-color:                  inherit;
+}

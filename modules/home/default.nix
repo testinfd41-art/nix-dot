@@ -5,5 +5,6 @@
     ./apps/firefox.nix
     ./apps/chromium.nix
     ./apps/theme.nix
+    ./apps/spotify.nix
   ];
 }

@@ -14,10 +14,10 @@
 
   time.timeZone = "Asia/Kolkata";
 
+  services.flatpak.enable = true;
   nixpkgs.config.allowUnfree = true;
   services.displayManager.ly.enable = true;
   programs.niri.enable = true;
-
   zramSwap = {
     enable = true;
     priority = 100;
@@ -45,7 +45,9 @@
   services.gvfs.enable = true;
   services.udisks2.enable = true;
   services.upower.enable = true;
-  services.tlp.enable = true;
+  services.power-profiles-daemon.enable = true;
+  services.tumbler.enable = true;
+  programs.xfconf.enable = true;
 
   security = {
     polkit.enable = true;
@@ -79,13 +81,14 @@
     rofi
     imagemagick
     nvd
-    obsidian
-    nemo
     unzip
+    quickshell
+    gnome-software
+    qimgv
   ];
 
   programs.localsend.enable = true;
-
+  programs.thunar.enable = true;
   fonts.packages = with pkgs; [
     nerd-fonts.jetbrains-mono
     ubuntu-sans

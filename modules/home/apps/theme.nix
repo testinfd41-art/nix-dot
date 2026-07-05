@@ -3,11 +3,16 @@
 {
   home.packages = with pkgs; [
     kdePackages.breeze
+    catppuccin-gtk
   ];
 
   gtk = {
     enable = true;
-    iconTheme.name = "Papirus-Dark";
+
+    iconTheme = {
+      name = "Papirus-Dark";
+    };
+
     cursorTheme = {
       name = "breeze_cursors";
       package = pkgs.kdePackages.breeze;
@@ -20,4 +25,3 @@
     XCURSOR_SIZE = "24";
   };
 }
-

@@ -12,7 +12,8 @@
         "niri/workspaces",
         "niri/window",
         "mpris",
-        "idle_inhibitor"
+        "idle_inhibitor",
+        "power-profiles-daemon"
     ],
       	"niri/workspaces": {
 		"format": "{icon}",

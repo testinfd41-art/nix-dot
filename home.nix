@@ -30,9 +30,6 @@ in
     enable = true;
   };
   home.stateVersion = "26.05";
-  home.sessionPath = [
-    "$HOME/.opencode/bin"
-  ];
   programs.bash = {
     enable = true;
     shellAliases = {

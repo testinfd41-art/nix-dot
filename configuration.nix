@@ -18,6 +18,7 @@
   nixpkgs.config.allowUnfree = true;
   services.displayManager.ly.enable = true;
   programs.niri.enable = true;
+
   zramSwap = {
     enable = true;
     priority = 100;
@@ -82,13 +83,13 @@
     imagemagick
     nvd
     unzip
-    quickshell
     gnome-software
     qimgv
   ];
 
   programs.localsend.enable = true;
   programs.thunar.enable = true;
+
   fonts.packages = with pkgs; [
     nerd-fonts.jetbrains-mono
     ubuntu-sans
